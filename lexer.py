@@ -1,4 +1,4 @@
-import ply.lex as lex
+from ply import *
 
 # Reserved words
 reserved = \
@@ -97,3 +97,5 @@ def t_preprocessor(t):
 def t_error(t):
     print(f"Illegal character '{t.value[0]}'")
     t.lexer.skip(1)
+
+lex.lex()

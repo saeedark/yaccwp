@@ -1,4 +1,5 @@
 import sys
+from ply import * 
 import lexer
 
 
@@ -27,16 +28,14 @@ else:
     """
 
 # Build the lexer
-lexer = lex.lex()
+#lexer = lex.lex()
 
 # Give the lexer some input
-lexer.input(data)
-
-
+lex.input(data)
 
 # Tokenize
 while True:
-    tok = lexer.token()
+    tok = lex.token()
     if not tok:
         break      # No more input
     print(tok.type, tok.value, tok.lineno, tok.lexpos)
