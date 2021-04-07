@@ -85,7 +85,6 @@ def t_comment(t):
 
 def t_comment2(t):
     r"""\/\/([^\\\n])*?\n"""
-    print('comment 2')
     t.lexer.lineno += t.value.count('\n')
 
 
