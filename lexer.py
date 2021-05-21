@@ -2,7 +2,7 @@ from ply import *
 
 # Reserved words
 reserved = \
-    ('BREAK', 'CHAR', 'CONTINUE', 'DO', 'ELSE', 'FOR', 'IF', 'INT', 'RETURN', 'VOID', 'WHILE', 'ASM', 'PRINTSTR')
+    ('BREAK', 'CHAR', 'CONTINUE', 'DO', 'ELSE', 'FOR', 'IF', 'INT', 'RETURN', 'VOID', 'WHILE', 'PRINTSTR')
 
 tokens = reserved + (
     'ID', 'NUMBER', 'S_CONST', 'C_CONST',
