@@ -1,9 +1,16 @@
+from posixpath import expanduser
 import sys
 from ply import * 
 import lexer
 
 class ParseException(Exception):
     pass
+
+####
+
+function_names = []
+called_function_names   =   []
+var_declaration_list    =   []
 
 ####
 
@@ -89,10 +96,12 @@ def p_unit(p):
 def p_statement_fun_def(p):
     """fun_def : declaration_specifier ID "(" ")" compound_statement
                | declaration_specifier ID "(" declaration_list ")" compound_statement"""
+    function_names.append(p[2])
     if len(p) >= 7:
         p[0] = ('fun', p[1], p[2], p[4], p[6])
     else:
         p[0] = ('fun', p[1], p[2], p[5])
+
 
 def p_statement_expr(p):
     """statement : expression ";"
@@ -108,6 +117,7 @@ def p_statement_fun_call(p):
         p[0] = ('call', p[1], p[3])
     else:
         p[0] = ('call', p[1])
+    called_function_names.append(p[1])
 
 
 def p_statement_str_call(p):
@@ -389,3 +399,9 @@ def p_error(p):
 
 
 yacc.yacc()
+
+def semantic_declation_check():
+    called_function_names.append('main')
+    if not set(called_function_names)==set(function_names):
+        diff = [i for i in called_function_names if i not in function_names]
+        raise Exception('Function(s) not declared: ', *diff)
