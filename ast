@@ -1,0 +1,1 @@
+('fun', 'int', 'main', (((('decli', 'int', 'i', 0), ('while', ('cond', '<', ('id', 'i'), 10), ('assign', 'i', ('binop', '+', ('id', 'i'), 1)))), ('assign', 'i', ('binop', '*', ('id', 'i'), 2))), ('printstr', '"calculation completed."')))

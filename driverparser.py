@@ -1,6 +1,6 @@
 import sys
 from ply import * 
-import parser
+import c_parser
 from util import build_tree
 
 if len(sys.argv) > 1:
